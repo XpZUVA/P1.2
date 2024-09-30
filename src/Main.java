@@ -9,7 +9,7 @@ public class Main {
 
 
         String digitosControl;
-        BigInteger ccc;
+        BigInteger cccCalculos , cccFinal;
         Scanner scanner = new Scanner(System.in);
         char cont = 's';
 
@@ -17,17 +17,18 @@ public class Main {
 
         do{
             digitosControl = "";
-            ccc = BigInteger.ZERO;
+            cccCalculos = BigInteger.ZERO;
 
             System.out.println("Introduce los dígitos (4) de control para identificar el país:");
             digitosControl = scanner.nextLine();
             System.out.println("Introduce el número de cuenta:");
-            ccc = scanner.nextBigInteger();
-            ccc = ccc.multiply(BigInteger.valueOf(1000000));
+            cccCalculos = scanner.nextBigInteger();
+            cccFinal = cccCalculos;
+            cccCalculos = cccCalculos.multiply(BigInteger.valueOf(1000000));
             int aux1 = (int) (digitosControl.charAt(0) - 55) * 10000 + (digitosControl.charAt(1) - 55) * 100 + digitosControl.charAt(2) * 10 + digitosControl.charAt(3);
-            ccc = ccc.add(BigInteger.valueOf(aux1));
+            cccCalculos = cccCalculos.add(BigInteger.valueOf(aux1));
 
-            IBAN cuenta1 = new IBAN(ccc);
+            IBAN cuenta1 = new IBAN(cccCalculos, cccFinal);
             cuenta1.crearIBAN();
             System.out.println("El IBAN de la cuenta es: " + cuenta1.getIbanCod());
 
