@@ -40,12 +40,4 @@ public class Main {
     }
 
 
-    public static void transformarDC(String digitosControl){
-
-
-
-
-
-
-    }
 }
